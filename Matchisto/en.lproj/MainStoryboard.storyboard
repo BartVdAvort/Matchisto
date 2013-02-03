@@ -287,12 +287,24 @@
                                     <action selector="dealCards:" destination="2" eventType="touchUpInside" id="OGj-e6-Ndu"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="I6I-Fo-Biv">
+                                <rect key="frame" x="20" y="366" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMode:" destination="2" eventType="valueChanged" id="KV8-CT-CBr"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="Ysv-UH-4ke" id="PPX-Bx-Z0a"/>
                         <outlet property="flipsLabel" destination="b8t-Sd-6qN" id="OMv-QT-WtE"/>
+                        <outlet property="matchLevel" destination="I6I-Fo-Biv" id="PUR-R3-VeO"/>
                         <outlet property="scoreLabel" destination="L8N-ab-Oh5" id="LWX-Ps-DyJ"/>
                         <outletCollection property="cardButtons" destination="BvA-eH-pdw" id="QXg-wD-k5M"/>
                         <outletCollection property="cardButtons" destination="Euw-2r-gkL" id="Udh-R5-Br5"/>
@@ -314,24 +326,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1034" y="54"/>
+            <point key="canvasLocation" x="-1302" y="63"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CardGameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dealCards:" candidateClass="UIButton"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="action" name="switchSetting:" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gameMode" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

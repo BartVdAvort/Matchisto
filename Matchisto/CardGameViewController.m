@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *matchLevel;
 @end
 
 @implementation CardGameViewController
@@ -25,7 +26,9 @@
 - (CardMatchingGame *)game
 {
     if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                          usingDeck:[[PlayingCardDeck alloc] init]];
+                                                          usingDeck:[[PlayingCardDeck alloc] init]
+                                                      withGameLevel: self.matchLevel.selectedSegmentIndex + 2];
+        
     return _game;
 }
 
@@ -59,12 +62,20 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
+    [self.matchLevel setEnabled:NO]; // disable UISegmentedControl if card is flipped
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     [self updateUI];
+}
+- (IBAction)changeMode:(UISegmentedControl *)sender {
+    if (sender.isEnabled){
+        self.game.gameMode = sender.selectedSegmentIndex + 2;
+        NSLog(@"gamemode changed to %d", self.game.gameMode);
+    }
 }
 
 - (IBAction)dealCards:(UIButton *)sender
 {
+    self.matchLevel.enabled = YES;
     self.game = nil;
     [self updateUI];
 }
